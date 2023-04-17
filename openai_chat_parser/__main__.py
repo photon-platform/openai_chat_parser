@@ -14,6 +14,18 @@ import urllib.request
 from datetime import datetime
 from slugify import slugify
 
+config_file_path = os.path.join(os.path.dirname(__file__), 'config.json')
+
+with open(config_file_path) as f:
+    config = json.load(f)
+
+chats_home = os.path.expanduser(config["chats_home"])
+downloads_folder = config["downloads_folder"]
+archive_folder = config["archive_folder"]
+conversations_folder = config["conversations_folder"]
+zip_download_retries = config["zip_download_retries"]
+retry_wait_time_seconds = config["retry_wait_time_seconds"]
+
 
 def parse_conversation(export_path, conv_num, conversation):
     """
@@ -73,7 +85,7 @@ def parse_conversation(export_path, conv_num, conversation):
             f.write(f"{content}\n\n")
 
 
-def unzip_and_parse_conversations(zip_file_path):
+def unzip_and_parse_conversations(zip_file_path, archive_path):
     """
     Unzip and parse the conversations from the ZIP file.
 
@@ -88,16 +100,16 @@ def unzip_and_parse_conversations(zip_file_path):
         file_name = zip_file_path.replace(".zip", "")
         userid, timestamp = file_name.split('-', 1)
         
-        archive_folder_path = f'archive/{timestamp}'
-        os.makedirs(archive_folder_path, exist_ok=True)
-        zip_file.extractall(archive_folder_path)
+        conversation_path = os.path.join(archive_path, timestamp)
+        os.makedirs(conversation_path, exist_ok=True)
+        zip_file.extractall(conversation_path)
 
-        with open(os.path.join(archive_folder_path, 'conversations.json')) as f:
+        with open(os.path.join(conversation_path, 'conversations.json')) as f:
             conversations = json.load(f)
 
         conversations.reverse()
 
-        export_path = f"{archive_folder_path}/export"
+        export_path = os.path.join(conversation_path, "conversations")
         os.makedirs(export_path, exist_ok=True)
 
         for conv_num, conversation in enumerate(conversations):
@@ -118,6 +130,7 @@ def download_zip(zip_url, destination_path):
     urllib.request.urlretrieve(zip_url, file_path)
     return file_path
 
+
 def main():
     print("OpenAI Chat Parser")
     print("This script downloads, extracts, and parses OpenAI chat conversation archives.")
@@ -125,10 +138,14 @@ def main():
     print()
 
     zip_url = input('Enter the zip URL: ')
-    destination_path = 'downloads'
-    os.makedirs(destination_path, exist_ok=True)
-    downloaded_zip_path = download_zip(zip_url, destination_path)
-    unzip_and_parse_conversations(downloaded_zip_path)
+    #  destination_path = 'downloads'
+    os.makedirs(chats_home, exist_ok=True)
+    downloads_path = os.path.join(chats_home, downloads_folder)
+    os.makedirs(downloads_path, exist_ok=True)
+    downloaded_zip_path = download_zip(zip_url, downloads_path)
+    archive_path = os.path.join(chats_home, archive_folder)
+    os.makedirs(archive_path, exist_ok=True)
+    unzip_and_parse_conversations(downloaded_zip_path, archive_path)
 
 if __name__ == '__main__':
     main()

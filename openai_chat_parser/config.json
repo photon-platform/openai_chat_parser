@@ -1,0 +1,9 @@
+{
+  "chats_home": "~/Chats",
+  "downloads_folder": "downloads",
+  "archive_folder": "archive",
+  "conversations_folder": "conversations",
+  "zip_download_retries": 3,
+  "retry_wait_time_seconds": 5
+}
+
