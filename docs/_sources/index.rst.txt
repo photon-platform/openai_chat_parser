@@ -25,13 +25,14 @@ contents
 .. toctree::
    :maxdepth: 1
 
-   refs/index.rst
+   REFS <refs/index.rst>
+   LOG </log#http://>
+   MODULES <mods/modules.rst>
 
 
+indices and tables
+------------------
 
-.. Indices and tables
-.. ==================
-
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

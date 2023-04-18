@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>openai_chat_parser package &#8212; PHOTON&lt;br/&gt;•&lt;br/&gt;template  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/photonsphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="canonical" href="https://photon-platform.github.io/template/mods/openai_chat_parser.html" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="prev" title="openai_chat_parser" href="../modules/" /> 
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../log/atom.xml"
+  title="PHOTON • template"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+             <section id="openai-chat-parser-package">
+<h1>openai_chat_parser package<a class="headerlink" href="#openai-chat-parser-package" title="Permalink to this heading">¶</a></h1>
+<section id="module-openai_chat_parser.__main__">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openai_chat_parser.__main__" title="Permalink to this heading">¶</a></h2>
+<p>openai_chat_parser</p>
+<p>A script to download, extract, and parse OpenAI chat conversation archives.
+The script takes a ZIP URL as input and processes the conversations, organizing them
+into separate folders with appropriate file formats based on the conversation content.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="openai_chat_parser.__main__.download_zip">
+<span class="sig-prename descclassname"><span class="pre">openai_chat_parser.__main__.</span></span><span class="sig-name descname"><span class="pre">download_zip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zip_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openai_chat_parser.__main__.download_zip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download a ZIP file from the given URL and save it to the specified destination path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>zip_url</strong> – The URL of the ZIP file.</p></li>
+<li><p><strong>destination_path</strong> – The folder where the ZIP file should be saved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The file path of the downloaded ZIP file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openai_chat_parser.__main__.main">
+<span class="sig-prename descclassname"><span class="pre">openai_chat_parser.__main__.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#openai_chat_parser.__main__.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openai_chat_parser.__main__.parse_conversation">
+<span class="sig-prename descclassname"><span class="pre">openai_chat_parser.__main__.</span></span><span class="sig-name descname"><span class="pre">parse_conversation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">export_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conv_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conversation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openai_chat_parser.__main__.parse_conversation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a conversation and save its content into separate files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>export_path</strong> – The folder where parsed conversations should be saved.</p></li>
+<li><p><strong>conv_num</strong> – The conversation number.</p></li>
+<li><p><strong>conversation</strong> – The conversation data as a dictionary.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="openai_chat_parser.__main__.unzip_and_parse_conversations">
+<span class="sig-prename descclassname"><span class="pre">openai_chat_parser.__main__.</span></span><span class="sig-name descname"><span class="pre">unzip_and_parse_conversations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zip_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archive_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#openai_chat_parser.__main__.unzip_and_parse_conversations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unzip and parse the conversations from the ZIP file.</p>
+<p>The function extracts the contents of the ZIP file, reads the
+‘conversations.json’ file, reverses the conversations order, and then calls
+the <cite>parse_conversation</cite> function for each conversation to parse and save
+its content.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>zip_file_path</strong> – The file path of the ZIP file containing the conversations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+<div class="section">
+   
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">PHOTON<br/>•<br/>template</h1>
+    
+  </a>
+</p>
+
+
+
+
+
+<iframe src="https://ghbtns.com/github-btn.html?user=photon-platform&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="230" height="30" title="GitHub"></iframe>
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=photon-platform&repo=template&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+<!-- <h3>Navigation</h3> -->
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../refs/">REFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="/log#http://">LOG</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules/">MODULES</a></li>
+</ul>
+
+
+<h3>
+  <a href="../../log/">LOG recent</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../log/23.107-161539/"
+      >23.107 - Publishing the OpenAI Chat Parser Tool to PyPI</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../log/23.107-160717/"
+      >23.107 - Status</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../log/23.107-152750/"
+      >23.107 - launch of the OPENAI Chat Parser tool</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../log/22.356-152519/"
+      >22.356 - Welcome</a
+    >
+  </li>
+  
+</ul>
+
+<h3><a href="../../log/tag/">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../log/tag/pypi/">pypi</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../log/tag/review/">review</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../log/tag/tool/">tool</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../../log/category/">Categories</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../log/category/status/">STATUS (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../log/category/announcement/">announcement (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../log/category/deployment/">deployment (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../log/category/status/">status (1)</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../../log/archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../log/2023/">2023 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../log/2022/">2022 (1)</a>
+  </li>
+   
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, PHOTON.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/photon-platform/photon-sphinx-theme">PHOTON Sphinx 0.0.1</a>
+      
+      |
+      <a href="../../_sources/mods/openai_chat_parser.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
