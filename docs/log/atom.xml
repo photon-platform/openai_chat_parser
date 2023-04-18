@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>https://photon-platform.github.io/template</id>
+  <title>PHOTON • template</title>
+  <updated>2023-04-17T23:17:32.322385+00:00</updated>
+  <link href="https://photon-platform.github.io/template"/>
+  <link href="https://photon-platform.github.io/template/log/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.26.dev1+geb44a66.d20221118">ABlog</generator>
+  <entry>
+    <id>https://photon-platform.github.io/template/log/22.356-152519/</id>
+    <title>Welcome</title>
+    <updated>2022-12-22T15:25:19-08:00</updated>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;first log entry for the system&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://photon-platform.github.io/template/log/22.356-152519/" rel="alternate"/>
+    <summary>first log entry for the system</summary>
+    <published>2022-12-22T15:25:19-08:00</published>
+  </entry>
+  <entry>
+    <id>https://photon-platform.github.io/template/log/23.107-152750/</id>
+    <title>launch of the OPENAI Chat Parser tool</title>
+    <updated>2023-04-17T15:27:50-07:00</updated>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;We are excited to introduce our latest tool: &lt;strong&gt;OpenAI Chat Parser&lt;/strong&gt;. This Python script is designed to download, extract, and parse OpenAI chat conversation archives, allowing users to easily organize and manage their chat transcripts.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://photon-platform.github.io/template/log/23.107-152750/" rel="alternate"/>
+    <summary>We are excited to introduce our latest tool: OpenAI Chat Parser. This Python script is designed to download, extract, and parse OpenAI chat conversation archives, allowing users to easily organize and manage their chat transcripts.</summary>
+    <category term="tool" label="tool"/>
+    <published>2023-04-17T15:27:50-07:00</published>
+  </entry>
+  <entry>
+    <id>https://photon-platform.github.io/template/log/23.107-160717/</id>
+    <title>Status</title>
+    <updated>2023-04-17T16:07:17-07:00</updated>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;We have made significant progress on the development of the &lt;strong&gt;OpenAI Chat Parser&lt;/strong&gt; tool. In this log entry, we will review the current state of the code and outline the remaining tasks using Sphinx todo directives.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://photon-platform.github.io/template/log/23.107-160717/" rel="alternate"/>
+    <summary>We have made significant progress on the development of the OpenAI Chat Parser tool. In this log entry, we will review the current state of the code and outline the remaining tasks using Sphinx todo directives.</summary>
+    <category term="review" label="review"/>
+    <published>2023-04-17T16:07:17-07:00</published>
+  </entry>
+  <entry>
+    <id>https://photon-platform.github.io/template/log/23.107-161539/</id>
+    <title>Publishing the OpenAI Chat Parser Tool to PyPI</title>
+    <updated>2023-04-17T16:15:39-07:00</updated>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;In this log entry, we will outline the process for publishing the OpenAI Chat Parser tool to the Python Package Index (PyPI), allowing users to easily install and use the package.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://photon-platform.github.io/template/log/23.107-161539/" rel="alternate"/>
+    <summary>In this log entry, we will outline the process for publishing the OpenAI Chat Parser tool to the Python Package Index (PyPI), allowing users to easily install and use the package.</summary>
+    <category term="pypi" label="pypi"/>
+    <published>2023-04-17T16:15:39-07:00</published>
+  </entry>
+</feed>
