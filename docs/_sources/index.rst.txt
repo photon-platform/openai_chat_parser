@@ -1,6 +1,6 @@
-GEOMETOR • template
-===================
 
+PHOTON • openai chat parser
+===========================
 
 .. include:: README.rst
 
@@ -13,13 +13,10 @@ recent logs:
    :excerpts:
 
 
-urgent todos:
--------------
+todos:
+------
 
-.. postlist:: 
-   :category: TODO
-   :tags: urgent
-   :excerpts:
+.. todolist::
 
 
 contents
