@@ -1,67 +1,57 @@
-OpenAI Chat Parser
-==================
 
-
-Overview
---------
-
-OpenAI Chat Parser is a Python script that downloads, extracts, and parses OpenAI chat conversation archives. The script takes a ZIP URL as input and processes the conversations, organizing them into separate folders with appropriate file formats based on the conversation content.
-
-
-Features
---------
-
-* Download chat archives from a given URL
-* Extract and parse conversations from the downloaded archives
-* Organize conversations into separate folders with appropriate file formats
-* Support for configuration file to customize various settings
-
-
-Requirements
-------------
-
-* Python 3.6 or higher
-* `slugify` package
-
+OpenAI Chat Parser is a command-line tool that downloads, extracts, and parses OpenAI chat conversation archives. The tool organizes conversations into separate folders with appropriate file formats based on the conversation content.
 
 Installation
 ------------
 
-1. Clone the repository:
+You can install the OpenAI Chat Parser package from PyPI using pip:
 
-   .. code-block:: bash
+.. code-block:: bash
 
-      git clone https://github.com/your_username/openai_chat_parser.git
-
-2. Install the required packages:
-
-   .. code-block:: bash
-
-      pip install -r requirements.txt
-
+   pip install openai-chat-parser
 
 Usage
 -----
 
-1. Modify the `config.json` file to customize settings such as destination path, archive folder, export folder, and download retry settings.
+After installing the package, you can use the `openai-chat-parser` command-line tool to process chat archives. 
 
-2. Run the script:
+To run the OpenAI Chat Parser, execute the following command:
 
-   .. code-block:: bash
+.. code-block:: bash
 
-      python openai_chat_parser.py
+   openai-chat-parser
 
-3. Enter the ZIP URL when prompted.
+The script will prompt you to enter the ZIP URL of the chat archive:
 
+.. code-block:: text
+
+   Enter the zip URL:
+
+Enter the URL and press `Enter`. The tool will download, extract, and parse the chat conversations, organizing them into separate folders.
+
+Configuration
+-------------
+
+Before using the OpenAI Chat Parser, you can configure the package by modifying the `config.json` file. This file contains settings like the destination path, archive folder, export folder, and download retries.
+
+Here's an example of the `config.json` file:
+
+.. code-block:: json
+
+   {
+      "chats_home": "~/Chats",
+      "downloads_folder": "downloads",
+      "archive_folder": "archive",
+      "conversations_folder": "conversations",
+      "zip_download_retries": 3,
+      "retry_wait_time_seconds": 5
+   }
+
+You can customize the settings in the `config.json` file to suit your needs.
 
 License
 -------
 
 This project is licensed under the MIT License.
 
-
-Contributing
-------------
-
-Feel free to create issues, submit pull requests, or contact the maintainers for any bugs, improvements, or feature requests.
 

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>OpenAI Chat Parser &#8212; PHOTON&lt;br/&gt;•&lt;br/&gt;template  documentation</title>
+    <title>Installation &#8212; PHOTON&lt;br/&gt;•&lt;br/&gt;template  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/photonsphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -66,63 +66,46 @@
           
 
           <div class="body" role="main">
-             <section id="openai-chat-parser">
-<h1>OpenAI Chat Parser<a class="headerlink" href="#openai-chat-parser" title="Permalink to this heading">¶</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h2>
-<p>OpenAI Chat Parser is a Python script that downloads, extracts, and parses OpenAI chat conversation archives. The script takes a ZIP URL as input and processes the conversations, organizing them into separate folders with appropriate file formats based on the conversation content.</p>
-</section>
-<section id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>Download chat archives from a given URL</p></li>
-<li><p>Extract and parse conversations from the downloaded archives</p></li>
-<li><p>Organize conversations into separate folders with appropriate file formats</p></li>
-<li><p>Support for configuration file to customize various settings</p></li>
-</ul>
-</section>
-<section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>Python 3.6 or higher</p></li>
-<li><p><cite>slugify</cite> package</p></li>
-</ul>
-</section>
+             <p>OpenAI Chat Parser is a command-line tool that downloads, extracts, and parses OpenAI chat conversation archives. The tool organizes conversations into separate folders with appropriate file formats based on the conversation content.</p>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
-<ol class="arabic">
-<li><p>Clone the repository:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/your_username/openai_chat_parser.git
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
+<p>You can install the OpenAI Chat Parser package from PyPI using pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install openai-chat-parser
 </pre></div>
 </div>
-</li>
-<li><p>Install the required packages:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
-</pre></div>
-</div>
-</li>
-</ol>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
-<ol class="arabic">
-<li><p>Modify the <cite>config.json</cite> file to customize settings such as destination path, archive folder, export folder, and download retry settings.</p></li>
-<li><p>Run the script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python openai_chat_parser.py
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h1>
+<p>After installing the package, you can use the <cite>openai-chat-parser</cite> command-line tool to process chat archives.</p>
+<p>To run the OpenAI Chat Parser, execute the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openai-chat-parser
 </pre></div>
 </div>
-</li>
-<li><p>Enter the ZIP URL when prompted.</p></li>
-</ol>
+<p>The script will prompt you to enter the ZIP URL of the chat archive:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Enter the zip URL:
+</pre></div>
+</div>
+<p>Enter the URL and press <cite>Enter</cite>. The tool will download, extract, and parse the chat conversations, organizing them into separate folders.</p>
+</section>
+<section id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h1>
+<p>Before using the OpenAI Chat Parser, you can configure the package by modifying the <cite>config.json</cite> file. This file contains settings like the destination path, archive folder, export folder, and download retries.</p>
+<p>Here’s an example of the <cite>config.json</cite> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;chats_home&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~/Chats&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;downloads_folder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;downloads&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;archive_folder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;archive&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;conversations_folder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;conversations&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;zip_download_retries&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;retry_wait_time_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>You can customize the settings in the <cite>config.json</cite> file to suit your needs.</p>
 </section>
 <section id="license">
-<h2>License<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h2>
+<h1>License<a class="headerlink" href="#license" title="Permalink to this heading">¶</a></h1>
 <p>This project is licensed under the MIT License.</p>
-</section>
-<section id="contributing">
-<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">¶</a></h2>
-<p>Feel free to create issues, submit pull requests, or contact the maintainers for any bugs, improvements, or feature requests.</p>
-</section>
 </section>
 
 <div class="section">
