@@ -13,6 +13,7 @@ import zipfile
 import urllib.request
 from datetime import datetime
 from slugify import slugify
+from rich import print
 
 config_file_path = os.path.join(os.path.dirname(__file__), 'config.json')
 
@@ -80,8 +81,9 @@ def parse_conversation(export_path, conv_num, conversation):
                 f.write(code_block.strip())
 
     with open(os.path.join(folder_path, '000-full_transcript.md'), 'w') as f:
+        f.write(f"# {title}\n\n")
         for i, (role, content) in enumerate(messages):
-            f.write(f"**{role.capitalize()}**\n\n")
+            f.write(f"\n**{role.capitalize()}**\n\n")
             f.write(f"{content}\n\n")
 
 
