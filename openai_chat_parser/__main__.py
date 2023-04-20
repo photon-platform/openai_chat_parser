@@ -98,6 +98,7 @@ def unzip_and_parse_conversations(zip_file_path, archive_path):
     """
     with zipfile.ZipFile(zip_file_path, 'r') as zip_file:
         file_name = zip_file_path.replace(".zip", "")
+        #  breakpoint()
         userid, timestamp = file_name.split('-', 1)
         
         conversation_path = os.path.join(archive_path, timestamp)
@@ -124,11 +125,18 @@ def download_zip(zip_url, destination_path):
     :param destination_path: The folder where the ZIP file should be saved.
     :return: The file path of the downloaded ZIP file.
     """
-    filename = zip_url.split('/')[-1].split('?')[0]
-    file_path = os.path.join(destination_path, filename)
+    print(f"{zip_url=}")
+    file_name = zip_url.split('?')[0]
+    file_name = file_name.split('/')[-1].split('?')[0]
+    print(f"{file_name=}")
+    file_path = os.path.join(destination_path, file_name)
+    print(f"{file_path=}")
 
-    urllib.request.urlretrieve(zip_url, file_path)
-    return file_path
+    download_path, http_message = urllib.request.urlretrieve(zip_url, file_path)
+    print(f"{download_path=}")
+    print(f"{http_message=}")
+    #  breakpoint()
+    return download_path
 
 
 def main():
