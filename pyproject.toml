@@ -17,10 +17,11 @@ dependencies = [
     "textual",
     "rich",
     "jinja2",
+    "python-slugify",
 ]
 
 [project.scripts]
-log = "photon_platform.openai_chat_parser.app:run"
+chat_parser = "photon_platform.openai_chat_parser.__main__:main"
 
 [build-system]
 requires = ["setuptools", "setuptools-scm"]

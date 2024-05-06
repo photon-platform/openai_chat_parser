@@ -15,7 +15,7 @@ from datetime import datetime
 from slugify import slugify
 from rich import print
 
-config_file_path = os.path.join(os.path.dirname(__file__), 'config.json')
+config_file_path = os.path.join(os.path.dirname(__file__), "config.json")
 
 with open(config_file_path) as f:
     config = json.load(f)
@@ -38,49 +38,67 @@ def parse_conversation(export_path, conv_num, conversation):
     """
     title = conversation["title"]
     messages = []
-    for node_id, node in conversation['mapping'].items():
-        if node['message'] is not None:
-            role = node['message']['author']['role']
-            content = node['message']['content']['parts'][0]
-            messages.append((role, content))
+    content = ''
+    try:
+        for node_id, node in conversation["mapping"].items():
+            if node["message"] is not None:
+                role = node["message"]["author"]["role"]
+                content_type = node['message']['content'].get('content_type', None)
+                if content_type == 'text':
+                    parts = node['message']['content'].get('parts', None)
+                    if parts:
+                        content = parts[0]
+                elif content_type == 'code':
+                    text = node['message']['content'].get('text', None)
+                    if text:
+                        content = text[0]
+
+                if content and content.strip():
+                    messages.append((role, content))
+
+    except Exception as e:
+        print(f"An error occurred while processing conversation {conv_num}: {e}")
+        print(f"Conversation data: {conversation}")
 
     folder_slug = slugify(title)
     folder_path = f"{export_path}/{conv_num:03}-{folder_slug}"
     os.makedirs(folder_path, exist_ok=True)
 
     # Save the conversation node as a JSON dump
-    with open(os.path.join(folder_path, f'000-original.json'), 'w') as f:
+    with open(os.path.join(folder_path, f"000-original.json"), "w") as f:
         json.dump(conversation, f, indent=2)
 
     for i, (role, content) in enumerate(messages):
         i += 1
-        with open(os.path.join(folder_path, f'{i:03}-{role}.md'), 'w') as f:
+        with open(os.path.join(folder_path, f"{i:03}-{role}.md"), "w") as f:
             f.write(content)
 
-        code_blocks = re.findall(r'```(.*?)\n(.*?)```', content, re.DOTALL)
+        code_blocks = re.findall(r"```(.*?)\n(.*?)```", content, re.DOTALL)
 
         for j, (code_type, code_block) in enumerate(code_blocks):
-            if code_type == 'python':
-                extension = '.py'
-            elif code_type == 'bash':
-                extension = '.sh'
-            elif code_type == 'html':
-                extension = '.html'
-            elif code_type == 'css':
-                extension = '.css'
-            elif code_type == 'rst':
-                extension = '.rst'
+            if code_type == "python":
+                extension = ".py"
+            elif code_type == "bash":
+                extension = ".sh"
+            elif code_type == "html":
+                extension = ".html"
+            elif code_type == "css":
+                extension = ".css"
+            elif code_type == "rst":
+                extension = ".rst"
             else:
-                extension = '.txt'  # Default file extension for unknown code types
+                extension = ".txt"  # Default file extension for unknown code types
 
-            if code_block.strip() == '' and content.endswith('```'):
-                content = content.rstrip('`')
-                code_block = content.split('```')[-1]
+            if code_block.strip() == "" and content.endswith("```"):
+                content = content.rstrip("`")
+                code_block = content.split("```")[-1]
 
-            with open(os.path.join(folder_path, f'{i:03}-{role}_code_{j}{extension}'), 'w') as f:
+            with open(
+                os.path.join(folder_path, f"{i:03}-{role}_code_{j}{extension}"), "w"
+            ) as f:
                 f.write(code_block.strip())
 
-    with open(os.path.join(folder_path, '000-full_transcript.md'), 'w') as f:
+    with open(os.path.join(folder_path, "000-full_transcript.md"), "w") as f:
         f.write(f"# {title}\n\n")
         for i, (role, content) in enumerate(messages):
             f.write(f"\n**{role.capitalize()}**\n\n")
@@ -98,16 +116,16 @@ def unzip_and_parse_conversations(zip_file_path, archive_path):
 
     :param zip_file_path: The file path of the ZIP file containing the conversations.
     """
-    with zipfile.ZipFile(zip_file_path, 'r') as zip_file:
+    with zipfile.ZipFile(zip_file_path, "r") as zip_file:
         file_name = zip_file_path.replace(".zip", "")
         #  breakpoint()
-        userid, timestamp = file_name.split('-', 1)
-        
+        userid, timestamp = file_name.split("-", 1)
+
         conversation_path = os.path.join(archive_path, timestamp)
         os.makedirs(conversation_path, exist_ok=True)
         zip_file.extractall(conversation_path)
 
-        with open(os.path.join(conversation_path, 'conversations.json')) as f:
+        with open(os.path.join(conversation_path, "conversations.json")) as f:
             conversations = json.load(f)
 
         conversations.reverse()
@@ -128,8 +146,8 @@ def download_zip(zip_url, destination_path):
     :return: The file path of the downloaded ZIP file.
     """
     print(f"{zip_url=}")
-    file_name = zip_url.split('?')[0]
-    file_name = file_name.split('/')[-1].split('?')[0]
+    file_name = zip_url.split("?")[0]
+    file_name = file_name.split("/")[-1].split("?")[0]
     print(f"{file_name=}")
     file_path = os.path.join(destination_path, file_name)
     print(f"{file_path=}")
@@ -143,11 +161,15 @@ def download_zip(zip_url, destination_path):
 
 def main():
     print("OpenAI Chat Parser")
-    print("This script downloads, extracts, and parses OpenAI chat conversation archives.")
-    print("It organizes conversations into separate folders with appropriate file formats based on the conversation content.")
+    print(
+        "This script downloads, extracts, and parses OpenAI chat conversation archives."
+    )
+    print(
+        "It organizes conversations into separate folders with appropriate file formats based on the conversation content."
+    )
     print()
 
-    zip_url = input('Enter the zip URL: ')
+    zip_url = input("Enter the zip URL: ")
     #  destination_path = 'downloads'
     os.makedirs(chats_home, exist_ok=True)
     downloads_path = os.path.join(chats_home, downloads_folder)
@@ -157,6 +179,6 @@ def main():
     os.makedirs(archive_path, exist_ok=True)
     unzip_and_parse_conversations(downloaded_zip_path, archive_path)
 
-if __name__ == '__main__':
-    main()
 
+if __name__ == "__main__":
+    main()
